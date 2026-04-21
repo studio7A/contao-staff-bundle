@@ -1,0 +1,13 @@
+{% extends '@Contao/block_searchable.html.twig' %}
+
+{% block content %}
+
+  {{ employees|raw }}
+
+  {% if referer|default %}
+    <!-- indexer::stop -->
+    <p class="back"><a href="{{ referer }}" title="{{ back }}">{{ back }}</a></p>
+    <!-- indexer::continue -->
+  {% endif %}
+
+{% endblock %}

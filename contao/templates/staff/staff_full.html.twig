@@ -1,0 +1,45 @@
+<div class="staff_full block{{ class }}">
+
+    {% if singleSRC|default %}
+        {% set floatClass = floatClass|default ~ ' staff_full__image' %}
+        {{ include('@Contao/image.html.twig') }}
+    {% endif %}
+
+    <div class="staff_full__data">
+
+        <h1 class="staff_full__name">{{ name_prefix|default }} {{ forename }} {{ surname }}{{ name_appendix|default }}</h1>
+
+        {% if position|default %}
+            <p class="staff_full__position">{{ position }}</p>
+        {% endif %}
+
+        {% if birthday|default %}
+            <div class="staff_full__birthday">Geboren am {{ birthday|date('d. F Y') }}</div>
+        {% endif %}
+
+        {% if entryDate|default %}
+            <p class="staff_full__entrydate">Im Unternehmen seit {{ entryDate|date('d. F Y') }}</p>
+        {% endif %}
+
+        {% if description|default %}
+            <div class="staff_full__description">{{ description|raw }}</div>
+        {% endif %}
+
+        <div class="staff_full__contact">
+            {% if phone|default %}
+                <a class="staff_full__contact-link staff_full__phone" href="tel:{{ phone }}">{{ phone }}</a>
+            {% endif %}
+
+            {% if mobile|default %}
+                <a class="staff_full__contact-link staff_full__mobile" href="tel:{{ mobile }}">{{ mobile }}</a>
+            {% endif %}
+
+            {% if email|default %}
+                <a class="staff_full__contact-link staff_full__mobile" href="mailto:{{ insert_tag('email_url::' ~ email) }}">{{ email }}</a>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% do add_schema_org(getSchemaOrgData.invoke()) %}

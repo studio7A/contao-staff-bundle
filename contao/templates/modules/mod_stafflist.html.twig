@@ -1,0 +1,20 @@
+{% extends '@Contao/block_unsearchable.html.twig' %}
+
+{% block content %}
+
+    {% if description|default %}
+        <div class="mod_stafflist__description">
+            {{ description|raw }}
+        </div>
+    {% endif %}
+
+    {% if employees is empty %}
+        <p class="empty">{{ empty }}</p>
+    {% else %}
+        <div class="mod_stafflist__items">
+            {{ employees|join|raw }}
+        </div>
+        {{ pagination|default|raw }}
+    {% endif %}
+
+{% endblock %}
