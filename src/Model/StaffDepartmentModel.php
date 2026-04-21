@@ -2,19 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GeorgPreissl\Staff;
+namespace Studio7A\ContaoStaffBundle\Model;
 
 use Contao\Model;
 
-/**
- * Reads and writes departments.
- */
 class StaffDepartmentModel extends Model
 {
-    /**
-     * Table name.
-     *
-     * @var string
-     */
     protected static $strTable = 'tl_staff_department';
 }

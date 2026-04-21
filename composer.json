@@ -1,41 +1,32 @@
 {
-    "name": "georgpreissl/contao-staff-bundle",
-	"homepage":"https://github.com/georgpreissl/contao-staff-bundle",        
-    "description": "Contao bundle to show employees in the frontend.",
-    "keywords": ["staff", "employees", "team", "georgpreissl", "bundle", "module", "contao"],
+    "name": "studio7a/contao-staff-bundle",
+    "homepage": "https://github.com/studio7A/contao-staff-bundle",
+    "description": "Contao bundle to show employees/staff in the frontend.",
+    "keywords": ["staff", "employees", "team", "bundle", "module", "contao"],
     "type": "contao-bundle",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Georg Preissl",
             "homepage": "https://github.com/georgpreissl",
-            "role":"Developer"                        
+            "role": "Original Author"
+        },
+        {
+            "name": "studio7A",
+            "homepage": "https://github.com/studio7A",
+            "role": "Maintainer"
         }
     ],
-    "support":{
-        "website":"https://www.georg-preissl.at",
-        "issues":"https://github.com/georgpreissl/contao-staff-bundle/issues",
-        "source":"https://github.com/georgpreissl/contao-staff-bundle"
-    },
     "require": {
-        "php": "^7.2 || ^8.0",
-        "contao/core-bundle": "~4.4"
+        "php": "^8.2",
+        "contao/core-bundle": "^5.3"
     },
     "autoload": {
         "psr-4": {
-            "GeorgPreissl\\Staff\\": "src/"
-        },
-        "classmap": [
-            "src/Resources/contao/"
-        ],
-        "exclude-from-classmap": [
-            "src/Resources/contao/config/",
-            "src/Resources/contao/dca/",
-            "src/Resources/contao/languages/",
-            "src/Resources/contao/templates/"
-        ]
+            "Studio7A\\ContaoStaffBundle\\": "src/"
+        }
     },
     "extra": {
-        "contao-manager-plugin": "GeorgPreissl\\Staff\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Studio7A\\ContaoStaffBundle\\ContaoManager\\Plugin"
     }
 }

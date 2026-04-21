@@ -1,34 +1,22 @@
 <?php
 
+declare(strict_types=1);
 
-/*
- * @copyright  trilobit GmbH
- * @author     trilobit GmbH <https://github.com/trilobit-gmbh>
- * @license    LGPL-3.0-or-later
- * @link       http://github.com/trilobit-gmbh/contao-socialmedia-bundle
- */
+namespace Studio7A\ContaoStaffBundle\ContaoManager;
 
-namespace GeorgPreissl\Staff\ContaoManager;
-
-use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
+use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Studio7A\ContaoStaffBundle\Studio7AContaoStaffBundle;
 
-/**
- * Plugin for the Contao Manager.
- *
- * @author Georg Preissl  <https://github.com/georgpreissl>
- */
 class Plugin implements BundlePluginInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getBundles(ParserInterface $parser)
+    public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create('GeorgPreissl\Staff\GeorgPreisslStaff')
-                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle']),
+            BundleConfig::create(Studio7AContaoStaffBundle::class)
+                ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
 }
