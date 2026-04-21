@@ -18,8 +18,8 @@
         }
     ],
     "require": {
-        "php": "^8.2",
-        "contao/core-bundle": "^5.3"
+        "php": "^8.4",
+        "contao/core-bundle": "^5.7"
     },
     "autoload": {
         "psr-4": {

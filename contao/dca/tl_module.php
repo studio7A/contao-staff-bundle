@@ -1,7 +1,7 @@
 <?php
 
-use Contao\Backend;
 use Contao\Controller;
+use Contao\Database;
 use Contao\DataContainer;
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][] = 'staffFilterDepartments';
@@ -77,12 +77,12 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['staff_template'] = [
     'sql' => "varchar(64) COLLATE ascii_bin NOT NULL default ''",
 ];
 
-class tl_module_staff extends Backend
+class tl_module_staff
 {
     public function getStaffArchives(): array
     {
         $arrArchives = [];
-        $objArchive = $this->Database->execute("SELECT id, title FROM tl_staff_archive ORDER BY title");
+        $objArchive = Database::getInstance()->execute("SELECT id, title FROM tl_staff_archive ORDER BY title");
 
         while ($objArchive->next()) {
             $arrArchives[$objArchive->id] = $objArchive->title;
@@ -94,7 +94,7 @@ class tl_module_staff extends Backend
     public function getStaffDepartments(): array
     {
         $arrDepartments = [];
-        $objDepartment = $this->Database->execute("SELECT id, title FROM tl_staff_department ORDER BY title");
+        $objDepartment = Database::getInstance()->execute("SELECT id, title FROM tl_staff_department ORDER BY title");
 
         while ($objDepartment->next()) {
             $arrDepartments[$objDepartment->id] = $objDepartment->title;

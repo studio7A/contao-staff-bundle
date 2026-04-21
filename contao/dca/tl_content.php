@@ -1,7 +1,7 @@
 <?php
 
-use Contao\Backend;
 use Contao\Controller;
+use Contao\Database;
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['staff'] = '{type_legend},type,headline;' .
     '{employee_legend},staff_employee;' .
@@ -43,12 +43,12 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['staff_template'] = [
     'sql' => "varchar(64) COLLATE ascii_bin NOT NULL default ''",
 ];
 
-class tl_content_staff extends Backend
+class tl_content_staff
 {
     public function getEmployees(): array
     {
         $arrEmployees = [];
-        $objEmployees = $this->Database->execute("SELECT id, forename, surname FROM tl_staff_employee ORDER BY surname");
+        $objEmployees = Database::getInstance()->execute("SELECT id, forename, surname FROM tl_staff_employee ORDER BY surname");
 
         while ($objEmployees->next()) {
             $arrEmployees[$objEmployees->id] = $objEmployees->forename . ' ' . $objEmployees->surname;

@@ -1,5 +1,6 @@
 <?php
 
+use Contao\ArrayUtil;
 use Studio7A\ContaoStaffBundle\Controller\ElementStaff;
 use Studio7A\ContaoStaffBundle\Controller\ModuleStaffList;
 use Studio7A\ContaoStaffBundle\Controller\ModuleStaffReader;
@@ -7,7 +8,7 @@ use Studio7A\ContaoStaffBundle\Model\StaffArchiveModel;
 use Studio7A\ContaoStaffBundle\Model\StaffDepartmentModel;
 use Studio7A\ContaoStaffBundle\Model\StaffEmployeeModel;
 
-array_insert($GLOBALS['BE_MOD']['content'], 1, [
+ArrayUtil::arrayInsert($GLOBALS['BE_MOD']['content'], 1, [
     'staff' => [
         'tables' => ['tl_staff_archive', 'tl_staff_employee', 'tl_staff_department'],
     ],

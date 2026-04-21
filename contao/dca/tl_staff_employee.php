@@ -1,6 +1,6 @@
 <?php
 
-use Contao\Backend;
+use Contao\Database;
 use Contao\DataContainer;
 use Contao\DC_Table;
 use Contao\System;
@@ -245,7 +245,7 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = [
     ],
 ];
 
-class tl_staff_employee extends Backend
+class tl_staff_employee
 {
     public function generateEmployeeRow(array $arrRow): string
     {
@@ -254,8 +254,10 @@ class tl_staff_employee extends Backend
 
     public function generateAlias(mixed $varValue, DataContainer $dc): string
     {
-        $aliasExists = function (string $alias) use ($dc): bool {
-            return $this->Database->prepare("SELECT id FROM tl_staff_employee WHERE alias=? AND id!=?")->execute($alias, $dc->id)->numRows > 0;
+        $db = Database::getInstance();
+
+        $aliasExists = function (string $alias) use ($dc, $db): bool {
+            return $db->prepare("SELECT id FROM tl_staff_employee WHERE alias=? AND id!=?")->execute($alias, $dc->id)->numRows > 0;
         };
 
         if (!$varValue) {
